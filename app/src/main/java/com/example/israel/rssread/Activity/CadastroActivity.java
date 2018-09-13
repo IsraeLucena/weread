@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -85,7 +86,7 @@ public class CadastroActivity extends AppCompatActivity {
      * Método responsável por cadastrar usuário com e-mail e senha
      * e fazer validações ao fazer o cadastro
      */
-    public void cadastrar( Usuario usuario){
+    public void cadastrar(final Usuario usuario){
 
         progressBar.setVisibility(View.VISIBLE);
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
@@ -97,17 +98,23 @@ public class CadastroActivity extends AppCompatActivity {
                 new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-
                         if( task.isSuccessful() ){
+                            try {
+                                progressBar.setVisibility(View.GONE);
+                                String idUsuario = task.getResult().getUser().getUid();
+                                usuario.setId(idUsuario);
+                                usuario.salvar();
 
-                            progressBar.setVisibility(View.GONE);
-                            Toast.makeText(CadastroActivity.this,
-                                    "Cadastro com sucesso",
-                                    Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CadastroActivity.this,
+                                         "Cadastro com sucesso",
+                                        Toast.LENGTH_SHORT).show();
 
-                            startActivity( new Intent(getApplicationContext(), MainActivity.class));
-                            finish();
+                                startActivity( new Intent(getApplicationContext(), MainActivity.class));
+                                finish();
 
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
                         }else {
 
                             progressBar.setVisibility( View.GONE );
