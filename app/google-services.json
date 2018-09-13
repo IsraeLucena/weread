@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "762374237621",
+    "firebase_url": "https://weread-30a1d.firebaseio.com",
+    "project_id": "weread-30a1d",
+    "storage_bucket": "weread-30a1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:762374237621:android:9f6b8a6e3305313d",
+        "android_client_info": {
+          "package_name": "com.example.israel.rssread"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "762374237621-hcq428oe1q3snf0fot7866dtgk0avlsd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.israel.rssread",
+            "certificate_hash": "b35593ffd49ba32d4ff824c3a34461c863b94e38"
+          }
+        },
+        {
+          "client_id": "762374237621-6cfqbpf5spd546ssn0r7acidfcta86ap.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByPAFkeoaRBLAyhKZW8g6QtUJ1KZ8HURs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "762374237621-6cfqbpf5spd546ssn0r7acidfcta86ap.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
