@@ -1,4 +1,4 @@
-package com.example.israel.rssread
+package com.example.israel.rssread.Kotlin
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
+import com.example.israel.rssread.R
 import com.wedeploy.android.Callback
 import com.wedeploy.android.WeDeploy
 import com.wedeploy.android.transport.Response
@@ -30,7 +31,7 @@ class AddItemActivity : AppCompatActivity(), Callback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_item)
+        setContentView(R.layout.activity_add_item_kotlin)
 
         weDeploy = WeDeploy.Builder().build()
         container = findViewById(R.id.content)
@@ -65,13 +66,13 @@ class AddItemActivity : AppCompatActivity(), Callback {
 
             if (itemId.isEmpty()) {
 
-                weDeploy.data(MainActivity.URL)
+                weDeploy.data(MainActivityKotlin.URL)
                         .create("items", itemJSON)
                         .execute(this)
 
             } else {
 
-                weDeploy.data(MainActivity.URL)
+                weDeploy.data(MainActivityKotlin.URL)
                         .update("items/$itemId", itemJSON)
                         .execute(this)
             }

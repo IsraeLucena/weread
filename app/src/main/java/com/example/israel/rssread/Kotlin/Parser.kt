@@ -1,4 +1,4 @@
-package com.example.israel.rssread
+package com.example.israel.rssread.Kotlin
 
 import org.json.JSONArray
 

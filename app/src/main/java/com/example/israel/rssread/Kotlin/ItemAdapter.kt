@@ -1,4 +1,4 @@
-package com.example.israel.rssread
+package com.example.israel.rssread.Kotlin
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.israel.rssread.R
 import com.wedeploy.android.Callback
 import com.wedeploy.android.WeDeploy
 import com.wedeploy.android.transport.Response
@@ -17,7 +18,7 @@ class ItemAdapter(var items: List<Item>) : RecyclerView.Adapter<ItemAdapter.Item
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_layout, parent, false)
+                .inflate(R.layout.item_layout_kotlin, parent, false)
 
         return ItemHolder(view)
     }
@@ -47,7 +48,7 @@ class ItemAdapter(var items: List<Item>) : RecyclerView.Adapter<ItemAdapter.Item
 
                         val weDeploy = WeDeploy.Builder().build()
 
-                        weDeploy.data(MainActivity.URL)
+                        weDeploy.data(MainActivityKotlin.URL)
                                 .delete("items/${currentItem.id}")
                                 .execute(object: Callback {
 
