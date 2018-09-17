@@ -37,12 +37,12 @@ public class NovoRssActivity extends AppCompatActivity {
         String vNome = intent.getStringExtra("nome");
         String vUrl = intent.getStringExtra("url");
 
-        if(!vKey.isEmpty()){
+        if(vKey != null){
             idFeed = vKey;
             campoNome.setText(vNome);
-            campoRss.setText(vUrl);
         }
-
+        if(vUrl != null)
+            campoRss.setText(vUrl);
 
         progressBar.setVisibility(View.GONE);
         botaoCadastrar.setOnClickListener(new View.OnClickListener() {

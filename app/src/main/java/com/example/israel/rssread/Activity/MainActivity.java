@@ -1,20 +1,27 @@
 package com.example.israel.rssread.Activity;
 
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.URLUtil;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.israel.rssread.Common.ConfiguracaoFirebase;
 import com.example.israel.rssread.Model.FeedRss;
@@ -39,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private List<FeedRss> listaFeed = new ArrayList<>();
     private FirebaseAuth autenticacao;
     private DatabaseReference reference;
+    private AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +60,36 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
         toolbar.setTitle("WeRead");
         setSupportActionBar( toolbar );
+
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        try {
+            final CharSequence textToPaste = clipboard.getPrimaryClip().getItemAt(0).getText();
+            if(URLUtil.isHttpsUrl(textToPaste.toString()) || URLUtil.isHttpUrl(textToPaste.toString())){
+                builder = new AlertDialog.Builder(MainActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                builder.setTitle("Url na área de transferência")
+                        .setMessage("Vocẽ deseja adicionar como um feed?")
+                        .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(MainActivity.this, NovoRssActivity.class);
+                                intent.putExtra("url", textToPaste.toString());
+                                MainActivity.this.startActivity(intent);
+
+                            }
+                        })
+                        .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_info)
+                        .show();
+            }
+            Log.d("teste", textToPaste.toString());
+            Toast.makeText(MainActivity.this, textToPaste, Toast.LENGTH_SHORT);
+        } catch (Exception e) {
+            return;
+        }
+
 
         //configuracoes de objetos
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();

@@ -8,19 +8,22 @@
     tools:layout_editor_absoluteY="25dp"
     android:background="#FF3F51B5">
 
-    <ImageView
+    <TextView
         android:id="@+id/imageView"
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:text="Cadastro"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/editCadastroNome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-         />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
         android:id="@+id/editCadastroSenha"
