@@ -7,21 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.israel.rssread.Model.Filme;
+import com.example.israel.rssread.Model.FeedRss;
 import com.example.israel.rssread.R;
 
 import java.util.List;
 
-/**
- * Created by jamiltondamasceno
- */
 
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
-    private List<Filme> listaFilmes;
+    private List<FeedRss> listaFeeds;
 
-    public Adapter(List<Filme> lista) {
-        this.listaFilmes = lista;
+    public Adapter(List<FeedRss> lista) {
+        this.listaFeeds = lista;
     }
 
     @Override
@@ -36,30 +33,27 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        Filme filme = listaFilmes.get( position );
-        holder.titulo.setText( filme.getTituloFilme() );
-        holder.genero.setText( filme.getGenero() );
-        holder.ano.setText( filme.getAno() );
+        FeedRss feed = listaFeeds.get( position );
+        holder.titulo.setText( feed.getNome() );
+        holder.url.setText( feed.getUrl() );
 
     }
 
     @Override
     public int getItemCount() {
-        return listaFilmes.size();
+        return listaFeeds.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView titulo;
-        TextView ano;
-        TextView genero;
+        TextView url;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
             titulo = itemView.findViewById(R.id.textTitulo);
-            ano = itemView.findViewById(R.id.textAno);
-            genero = itemView.findViewById(R.id.textGenero);
+            url = itemView.findViewById(R.id.textUrl);
 
         }
     }

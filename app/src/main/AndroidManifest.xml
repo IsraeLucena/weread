@@ -19,12 +19,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.MainActivity" />
-        <activity android:name=".Activity.CadastroActivity"></activity>
- <!--       <activity
+        <activity android:name=".Activity.CadastroActivity" />
+        <!--
+            <activity
             android:name=".Kotlin.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Kotlin.AddItemActivity"></activity> -->
+        <activity android:name=".Kotlin.AddItemActivity"></activity>
+        -->
+        <activity android:name=".Activity.NovoRssActivity" />
+        <activity android:name=".Activity.FeedActivity" />
+        <activity android:name=".Activity.DetailActivity"></activity>
     </application>
 
 </manifest>
